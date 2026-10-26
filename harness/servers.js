@@ -12,6 +12,12 @@ export const SPICEDB_KEY = 'authz-three-ways-local';
 // an existing file or symlink at the log path is refused, not followed.
 let logDir;
 let starts = 0;
+
+// Kill the engines even when the harness dies on an uncaught error.
+const live = new Set();
+process.on('exit', () => {
+  for (const p of live) p.kill('SIGTERM');
+});
 function logFile(name) {
   logDir ??= mkdtempSync(join(tmpdir(), 'authz-three-ways-'));
   return openSync(join(logDir, `${name}-${starts}.log`), 'wx');
@@ -48,6 +54,7 @@ export async function startServers(tree, names) {
       env: { ...process.env, CERBOS_NO_TELEMETRY: '1' },
     });
     procs.push(p);
+    live.add(p);
     await waitFor(async () => {
       try {
         const r = await fetch('http://127.0.0.1:3592/_cerbos/health');
@@ -75,12 +82,14 @@ export async function startServers(tree, names) {
       { stdio: ['ignore', log, log] },
     );
     procs.push(p);
+    live.add(p);
     await waitFor(() => portOpen(50051), 'spicedb');
   }
   return async function stop() {
     for (const p of procs) {
       p.kill('SIGTERM');
       await new Promise((r) => (p.exitCode !== null ? r() : p.once('exit', r)));
+      live.delete(p);
     }
   };
 }
