@@ -1,0 +1,19 @@
+definition user {}
+
+definition org {
+    relation admin: user
+    relation editor: user
+    relation viewer: user
+
+    permission view_docs = viewer + editor + admin
+    permission edit_docs = editor + admin
+    permission delete_docs = admin
+}
+
+definition document {
+    relation org: org
+
+    permission view = org->view_docs
+    permission edit = org->edit_docs
+    permission delete = org->delete_docs
+}
