@@ -1,13 +1,21 @@
 // Start and stop the two engines on 127.0.0.1 for one run.
 import { spawn } from 'node:child_process';
-import { openSync, mkdirSync } from 'node:fs';
+import { openSync, mkdtempSync } from 'node:fs';
 import { connect } from 'node:net';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const root = new URL('..', import.meta.url).pathname;
 export const SPICEDB_KEY = 'authz-three-ways-local';
-const logDir = join(tmpdir(), 'authz-three-ways-logs');
+
+// A fresh private directory per process (mode 0700 from mkdtemp), and 'wx' so
+// an existing file or symlink at the log path is refused, not followed.
+let logDir;
+let starts = 0;
+function logFile(name) {
+  logDir ??= mkdtempSync(join(tmpdir(), 'authz-three-ways-'));
+  return openSync(join(logDir, `${name}-${starts}.log`), 'wx');
+}
 
 function portOpen(port) {
   return new Promise((resolve) => {
@@ -29,11 +37,11 @@ async function waitFor(fn, what, ms = 30000) {
 }
 
 export async function startServers(tree, names) {
-  mkdirSync(logDir, { recursive: true });
+  starts++;
   const procs = [];
   if (names.includes('cerbos')) {
     if (await portOpen(3593)) throw new Error('port 3593 already in use');
-    const log = openSync(join(logDir, 'cerbos.log'), 'w');
+    const log = logFile('cerbos');
     const p = spawn(`${root}.bin/cerbos`, ['server', '--config=config.yaml'], {
       cwd: join(tree, 'approaches/cerbos'),
       stdio: ['ignore', log, log],
@@ -51,7 +59,7 @@ export async function startServers(tree, names) {
   }
   if (names.includes('spicedb')) {
     if (await portOpen(50051)) throw new Error('port 50051 already in use');
-    const log = openSync(join(logDir, 'spicedb.log'), 'w');
+    const log = logFile('spicedb');
     const p = spawn(
       `${root}.bin/spicedb`,
       [
