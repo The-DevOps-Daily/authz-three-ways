@@ -10,6 +10,7 @@ export async function open(db) {
   const getUser = db.prepare('SELECT id, role FROM users WHERE id = ?');
   const getTeams = db.prepare('SELECT team_id FROM team_members WHERE user_id = ?');
   const getDoc = db.prepare('SELECT id, team_id FROM documents WHERE id = ?');
+  const getShares = db.prepare('SELECT user_id, level FROM shares WHERE document_id = ?');
   const allDocs = db.prepare('SELECT id FROM documents');
 
   function principalOf(userId) {
@@ -19,6 +20,16 @@ export async function open(db) {
     return { id: user.id, roles: [user.role], attr: { teams } };
   }
 
+  function resourceOf(doc) {
+    const shares = getShares.all(doc.id);
+    const usersWith = (level) => shares.filter((s) => s.level === level).map((s) => s.user_id);
+    return {
+      kind: 'document',
+      id: doc.id,
+      attr: { team: doc.team_id, viewers: usersWith('view'), editors: usersWith('edit') },
+    };
+  }
+
   return {
     async check(userId, action, docId) {
       const principal = principalOf(userId);
@@ -26,7 +37,7 @@ export async function open(db) {
       if (!principal || !doc) return false;
       const result = await cerbos.checkResource({
         principal,
-        resource: { kind: 'document', id: doc.id, attr: { team: doc.team_id } },
+        resource: resourceOf(doc),
         actions: [action],
       });
       return result.isAllowed(action) === true;

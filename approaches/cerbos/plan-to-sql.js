@@ -7,6 +7,14 @@ const COLUMNS = {
   'request.resource.attr.team': 'd.team_id',
 };
 
+// List attributes that live in another table: `value in attr` becomes EXISTS.
+const MEMBERSHIP = {
+  'request.resource.attr.viewers':
+    "EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'view' AND s.user_id = ?)",
+  'request.resource.attr.editors':
+    "EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'edit' AND s.user_id = ?)",
+};
+
 function column(node) {
   if (!(node instanceof PlanExpressionVariable) || !(node.name in COLUMNS)) {
     throw new Error(`unmapped plan operand ${JSON.stringify(node)}`);
@@ -32,6 +40,10 @@ export function planToSql(node, params) {
       params.push(constant(b));
       return `${column(a)} = ?`;
     case 'in': {
+      if (b instanceof PlanExpressionVariable && b.name in MEMBERSHIP) {
+        params.push(constant(a));
+        return MEMBERSHIP[b.name];
+      }
       const list = constant(b);
       if (list.length === 0) return '0';
       params.push(...list);

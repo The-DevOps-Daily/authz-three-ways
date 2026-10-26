@@ -6,11 +6,11 @@ resourcePolicy:
   rules:
     - actions: [view]
       effect: EFFECT_ALLOW
-      derivedRoles: [team_viewer]
+      derivedRoles: [team_viewer, shared_viewer, shared_editor]
 
     - actions: [edit]
       effect: EFFECT_ALLOW
-      derivedRoles: [team_editor]
+      derivedRoles: [team_editor, shared_editor]
 
     - actions: [view, edit, delete]
       effect: EFFECT_ALLOW

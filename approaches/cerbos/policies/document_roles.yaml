@@ -13,3 +13,15 @@ derivedRoles:
       condition:
         match:
           expr: request.resource.attr.team in request.principal.attr.teams
+
+    - name: shared_viewer
+      parentRoles: ["*"]
+      condition:
+        match:
+          expr: request.principal.id in request.resource.attr.viewers
+
+    - name: shared_editor
+      parentRoles: ["*"]
+      condition:
+        match:
+          expr: request.principal.id in request.resource.attr.editors
