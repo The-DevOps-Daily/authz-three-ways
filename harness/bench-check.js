@@ -6,7 +6,8 @@ import { setTimeout as sleep } from 'node:timers/promises';
 import { args, mulberry32, pick, stamp, summarize, writeJson, now } from './lib.js';
 import { generateWorld } from './world.js';
 import { loadApp, openApproaches, namesFrom } from './approaches.js';
-import { startServers } from './servers.js';
+import { readFileSync } from 'node:fs';
+import { startServers, serverLog } from './servers.js';
 
 const a = args({ tree: '.', docs: '10000', samples: '10000', warmup: '1000', seed: '7' });
 const step = Number(a.step);
@@ -40,25 +41,37 @@ try {
 
   const times = Object.fromEntries(names.map((n) => [n, new Float64Array(samples)]));
   const allows = Object.fromEntries(names.map((n) => [n, 0]));
+  // A failed call is counted, not timed, and its sample is left out of the
+  // agreement check. Nothing is retried.
+  const errors = Object.fromEntries(names.map((n) => [n, []]));
   const disagreements = [];
+  const runStart = now();
   for (let i = 0; i < samples; i++) {
     const [u, act, d] = triple();
     const res = {};
     for (let k = 0; k < names.length; k++) {
       const n = names[(i + k) % names.length];
       const t0 = now();
-      res[n] = await impls[n].check(u, act, d);
-      times[n][i] = now() - t0;
-      if (res[n]) allows[n]++;
+      try {
+        res[n] = await impls[n].check(u, act, d);
+        times[n][i] = now() - t0;
+        if (res[n]) allows[n]++;
+      } catch (e) {
+        times[n][i] = NaN;
+        errors[n].push({ sample: i, atMs: Math.round(now() - runStart), message: e.message });
+      }
     }
     const vals = new Set(Object.values(res));
-    if (vals.size > 1) disagreements.push({ user: u, action: act, document: d, ...res });
+    if (Object.keys(res).length === names.length && vals.size > 1) {
+      disagreements.push({ user: u, action: act, document: d, ...res });
+    }
   }
   for (const n of names) {
     out.approaches[n] = {
       openMs: impls[n].openMs,
       allowed: allows[n],
-      latencyMs: summarize(times[n]),
+      errors: { count: errors[n].length, all: errors[n] },
+      latencyMs: summarize(Array.from(times[n]).filter((v) => !Number.isNaN(v))),
     };
     await impls[n].close?.();
   }
@@ -68,17 +81,30 @@ try {
     writeJson(a.raw, {
       stamp: st,
       unit: 'ms',
-      samples: Object.fromEntries(names.map((n) => [n, Array.from(times[n], (v) => Math.round(v * 1000) / 1000)])),
+      samples: Object.fromEntries(
+        names.map((n) => [n, Array.from(times[n], (v) => (Number.isNaN(v) ? null : Math.round(v * 1000) / 1000))]),
+      ),
     });
   }
 } finally {
   await stop();
 }
 
+// Cerbos logs its own handling time for every request (grpc.time_ms). Taken
+// from the measured part of the run only: the last `samples` CheckResources.
+if (names.includes('cerbos')) {
+  const handled = readFileSync(serverLog('cerbos'), 'utf8')
+    .split('\n')
+    .filter((l) => l.includes('"grpc.method":"CheckResources"') && l.includes('"grpc.code"'))
+    .map((l) => Number(JSON.parse(l)['grpc.time_ms']));
+  out.cerbosServerHandlingMs = summarize(handled.slice(-samples));
+  console.log(`cerbos server-side handling (from its log): p50 ${out.cerbosServerHandlingMs.p50} ms  p99 ${out.cerbosServerHandlingMs.p99} ms`);
+}
+
 for (const n of names) {
   const l = out.approaches[n].latencyMs;
   console.log(
-    `step ${step} docs=${docs} ${n.padEnd(8)} p50 ${l.p50} ms  p95 ${l.p95} ms  p99 ${l.p99} ms  max ${l.max} ms  allowed ${out.approaches[n].allowed}/${samples}`,
+    `step ${step} docs=${docs} ${n.padEnd(8)} p50 ${l.p50} ms  p95 ${l.p95} ms  p99 ${l.p99} ms  max ${l.max} ms  allowed ${out.approaches[n].allowed}/${samples}  errors ${out.approaches[n].errors.count}`,
   );
 }
 console.log(`disagreements: ${out.disagreements.count}`);

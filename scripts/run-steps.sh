@@ -7,7 +7,7 @@ export QUIET_LOAD=${QUIET_LOAD:-1.5} QUIET_MAX=${QUIET_MAX:-900}
 cd "$(dirname "$0")/.."
 [ -x .bin/cerbos ] && [ -x .bin/spicedb ] || ./scripts/fetch-binaries.sh
 mkdir -p results/steps
-for step in 1 2 3 4; do
+for step in ${STEPS:-1 2 3 4}; do
   tree=.steps/step$step
   rm -rf "$tree" && mkdir -p "$tree"
   # step<N>-spicedb is the last commit of step N, so it holds all three designs at that step.

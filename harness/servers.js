@@ -18,9 +18,16 @@ const live = new Set();
 process.on('exit', () => {
   for (const p of live) p.kill('SIGTERM');
 });
+const logPaths = {};
 function logFile(name) {
   logDir ??= mkdtempSync(join(tmpdir(), 'authz-three-ways-'));
-  return openSync(join(logDir, `${name}-${starts}.log`), 'wx');
+  logPaths[name] = join(logDir, `${name}-${starts}.log`);
+  return openSync(logPaths[name], 'wx');
+}
+
+// Paths of the logs from the most recent start, e.g. serverLog('cerbos').
+export function serverLog(name) {
+  return logPaths[name];
 }
 
 function portOpen(port) {

@@ -56,16 +56,23 @@ for (const docs of String(a.docs).split(',').map(Number)) {
       }
 
       const times = Object.fromEntries(names.map((n) => [n, []]));
+      const errors = Object.fromEntries(names.map((n) => [n, []]));
       for (let i = 0; i < warmup + iters; i++) {
         for (let k = 0; k < names.length; k++) {
           const n = names[(i + k) % names.length];
           const t0 = now();
-          await impls[n].list(user);
-          const dt = now() - t0;
-          if (i >= warmup) times[n].push(dt);
+          try {
+            await impls[n].list(user);
+            const dt = now() - t0;
+            if (i >= warmup) times[n].push(dt);
+          } catch (e) {
+            // Counted, not timed, not retried.
+            errors[n].push({ iteration: i, message: e.message });
+          }
         }
       }
       p.latencyMs = Object.fromEntries(names.map((n) => [n, summarize(times[n])]));
+      p.errors = Object.fromEntries(names.map((n) => [n, { count: errors[n].length, all: errors[n] }]));
       run.profiles[profile] = p;
       console.log(
         `step ${step} docs=${docs} ${profile.padEnd(10)} (${user}) visible ${JSON.stringify(p.visible)} agree=${agree}` +
@@ -73,7 +80,7 @@ for (const docs of String(a.docs).split(',').map(Number)) {
       );
       for (const n of names) {
         const l = p.latencyMs[n];
-        console.log(`    ${n.padEnd(8)} median ${l.p50} ms  min ${l.min} ms  max ${l.max} ms`);
+        console.log(`    ${n.padEnd(8)} median ${l.p50} ms  min ${l.min} ms  max ${l.max} ms  errors ${p.errors[n].count}`);
       }
     }
     for (const n of names) await impls[n].close?.();
