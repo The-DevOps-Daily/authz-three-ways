@@ -39,7 +39,9 @@ export async function open(db) {
     },
 
     async list(userId) {
-      const ids = [];
+      // A document reachable by two paths (admin and team member) comes back
+      // twice; SpiceDB leaves de-duplication to the client.
+      const ids = new Set();
       let cursor;
       let requests = 0;
       for (;;) {
@@ -55,13 +57,13 @@ export async function open(db) {
         );
         requests++;
         for (const r of page) {
-          if (r.permissionship === v1.LookupPermissionship.HAS_PERMISSION) ids.push(r.resourceObjectId);
+          if (r.permissionship === v1.LookupPermissionship.HAS_PERMISSION) ids.add(r.resourceObjectId);
         }
         if (page.length < PAGE) break;
         cursor = page[page.length - 1].afterResultCursor;
       }
       self.lastList = { requests };
-      return ids;
+      return [...ids];
     },
 
     close() {

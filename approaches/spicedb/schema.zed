@@ -10,10 +10,20 @@ definition org {
     permission delete_docs = admin
 }
 
+definition team {
+    relation org: org
+    relation member: user
+
+    // Org roles apply only to documents of the user's own teams.
+    permission view_docs = member & org->view_docs
+    permission edit_docs = member & org->edit_docs
+}
+
 definition document {
     relation org: org
+    relation team: team
 
-    permission view = org->view_docs
-    permission edit = org->edit_docs
+    permission view = org->admin + team->view_docs
+    permission edit = org->admin + team->edit_docs
     permission delete = org->delete_docs
 }

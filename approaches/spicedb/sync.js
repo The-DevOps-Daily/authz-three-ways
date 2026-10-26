@@ -22,8 +22,15 @@ export function relationshipsFrom(db) {
   for (const u of db.prepare('SELECT id, role FROM users').all()) {
     out.push(touch('org', ORG, u.role, 'user', u.id));
   }
-  for (const d of db.prepare('SELECT id FROM documents').all()) {
+  for (const t of db.prepare('SELECT id FROM teams').all()) {
+    out.push(touch('team', t.id, 'org', 'org', ORG));
+  }
+  for (const m of db.prepare('SELECT team_id, user_id FROM team_members').all()) {
+    out.push(touch('team', m.team_id, 'member', 'user', m.user_id));
+  }
+  for (const d of db.prepare('SELECT id, team_id FROM documents').all()) {
     out.push(touch('document', d.id, 'org', 'org', ORG));
+    out.push(touch('document', d.id, 'team', 'team', d.team_id));
   }
   return out;
 }
