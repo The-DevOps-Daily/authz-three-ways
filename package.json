@@ -1,0 +1,18 @@
+{
+  "name": "authz-three-ways",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One permission model written as if-statements, as Cerbos policies and as a SpiceDB relationship graph, grown in four steps and measured.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "@authzed/authzed-node": "1.6.1",
+    "@cerbos/grpc": "0.29.1"
+  },
+  "overrides": {
+    "@cerbos/core": "0.33.1"
+  }
+}

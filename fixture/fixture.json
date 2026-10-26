@@ -1,0 +1,24 @@
+{
+  "teams": ["eng", "sales"],
+  "users": [
+    { "id": "ada", "role": "admin", "teams": [], "contractor": false },
+    { "id": "ed", "role": "editor", "teams": ["eng"], "contractor": false },
+    { "id": "vi", "role": "viewer", "teams": ["eng", "sales"], "contractor": false },
+    { "id": "sam", "role": "editor", "teams": ["sales"], "contractor": false },
+    { "id": "cora", "role": "editor", "teams": ["eng"], "contractor": true },
+    { "id": "nell", "role": "viewer", "teams": [], "contractor": false },
+    { "id": "kai", "role": "admin", "teams": ["sales"], "contractor": true }
+  ],
+  "documents": [
+    { "id": "d1", "team": "eng" },
+    { "id": "d2", "team": "eng" },
+    { "id": "d3", "team": "sales" },
+    { "id": "d4", "team": "sales" }
+  ],
+  "shares": [
+    { "doc": "d3", "user": "ed", "level": "view" },
+    { "doc": "d1", "user": "vi", "level": "edit" },
+    { "doc": "d4", "user": "cora", "level": "edit" },
+    { "doc": "d2", "user": "nell", "level": "view" }
+  ]
+}
