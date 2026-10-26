@@ -19,8 +19,9 @@ function touch(resourceType, resourceId, relation, subjectType, subjectId) {
 
 export function relationshipsFrom(db) {
   const out = [];
-  for (const u of db.prepare('SELECT id, role FROM users').all()) {
+  for (const u of db.prepare('SELECT id, role, contractor FROM users').all()) {
     out.push(touch('org', ORG, u.role, 'user', u.id));
+    if (u.contractor) out.push(touch('org', ORG, 'contractor', 'user', u.id));
   }
   for (const t of db.prepare('SELECT id FROM teams').all()) {
     out.push(touch('team', t.id, 'org', 'org', ORG));

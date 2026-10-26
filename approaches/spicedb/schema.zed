@@ -4,6 +4,7 @@ definition org {
     relation admin: user
     relation editor: user
     relation viewer: user
+    relation contractor: user
 
     permission view_docs = viewer + editor + admin
     permission edit_docs = editor + admin
@@ -26,7 +27,10 @@ definition document {
     relation viewer: user
     relation editor: user
 
-    permission view = org->admin + team->view_docs + viewer + editor
-    permission edit = org->admin + team->edit_docs + editor
-    permission delete = org->delete_docs
+    // Contractors get nothing outside their own teams, whatever else grants it.
+    permission outside_contractor = org->contractor - team->member
+
+    permission view = (org->admin + team->view_docs + viewer + editor) - outside_contractor
+    permission edit = (org->admin + team->edit_docs + editor) - outside_contractor
+    permission delete = org->delete_docs - outside_contractor
 }
