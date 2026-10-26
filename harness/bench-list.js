@@ -1,6 +1,7 @@
 // "Which documents can this user view?" for three fixed profiles, at each
 // document count. All three answers must be identical before any timing.
-// --crosscheck also checks every document one by one and compares with the list.
+// --crosscheck=<max docs> also checks every document one by one and compares
+// with the list, for document counts up to that size.
 //   node harness/bench-list.js --step=4 --docs=1000,10000 --iters=20 --out=file
 import { setTimeout as sleep } from 'node:timers/promises';
 import { loadavg } from 'node:os';
@@ -41,7 +42,7 @@ for (const docs of String(a.docs).split(',').map(Number)) {
       if (!agree) problems++;
       const p = { user, visible: Object.fromEntries(names.map((n) => [n, answers[n].length])), agree, info };
 
-      if (a.crosscheck) {
+      if (a.crosscheck && docs <= Number(a.crosscheck)) {
         p.crosscheck = {};
         for (const n of names) {
           const listed = new Set(answers[n]);
