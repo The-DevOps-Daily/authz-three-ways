@@ -32,6 +32,9 @@ export function relationshipsFrom(db) {
     out.push(touch('document', d.id, 'org', 'org', ORG));
     out.push(touch('document', d.id, 'team', 'team', d.team_id));
   }
+  for (const s of db.prepare('SELECT document_id, user_id, level FROM shares').all()) {
+    out.push(touch('document', s.document_id, s.level === 'edit' ? 'editor' : 'viewer', 'user', s.user_id));
+  }
   return out;
 }
 

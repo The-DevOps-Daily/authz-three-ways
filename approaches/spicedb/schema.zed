@@ -22,8 +22,11 @@ definition team {
 definition document {
     relation org: org
     relation team: team
+    // Per-document shares.
+    relation viewer: user
+    relation editor: user
 
-    permission view = org->admin + team->view_docs
-    permission edit = org->admin + team->edit_docs
+    permission view = org->admin + team->view_docs + viewer + editor
+    permission edit = org->admin + team->edit_docs + editor
     permission delete = org->delete_docs
 }
