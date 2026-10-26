@@ -1,0 +1,15 @@
+apiVersion: api.cerbos.dev/v1
+derivedRoles:
+  name: document_roles
+  definitions:
+    - name: team_viewer
+      parentRoles: [viewer, editor]
+      condition:
+        match:
+          expr: request.resource.attr.team in request.principal.attr.teams
+
+    - name: team_editor
+      parentRoles: [editor]
+      condition:
+        match:
+          expr: request.resource.attr.team in request.principal.attr.teams

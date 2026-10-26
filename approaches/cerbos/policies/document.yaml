@@ -2,15 +2,16 @@ apiVersion: api.cerbos.dev/v1
 resourcePolicy:
   version: default
   resource: document
+  importDerivedRoles: [document_roles]
   rules:
     - actions: [view]
       effect: EFFECT_ALLOW
-      roles: [viewer, editor, admin]
+      derivedRoles: [team_viewer]
 
     - actions: [edit]
       effect: EFFECT_ALLOW
-      roles: [editor, admin]
+      derivedRoles: [team_editor]
 
-    - actions: [delete]
+    - actions: [view, edit, delete]
       effect: EFFECT_ALLOW
       roles: [admin]

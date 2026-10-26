@@ -3,16 +3,20 @@
 // every request; Cerbos stores no application data.
 import { GRPC } from '@cerbos/grpc';
 import { PlanKind } from '@cerbos/core';
+import { planToSql } from './plan-to-sql.js';
 
 export async function open(db) {
   const cerbos = new GRPC(process.env.CERBOS_GRPC ?? '127.0.0.1:3593', { tls: false });
   const getUser = db.prepare('SELECT id, role FROM users WHERE id = ?');
-  const getDoc = db.prepare('SELECT id FROM documents WHERE id = ?');
+  const getTeams = db.prepare('SELECT team_id FROM team_members WHERE user_id = ?');
+  const getDoc = db.prepare('SELECT id, team_id FROM documents WHERE id = ?');
   const allDocs = db.prepare('SELECT id FROM documents');
 
   function principalOf(userId) {
     const user = getUser.get(userId);
-    return user && { id: user.id, roles: [user.role] };
+    if (!user) return null;
+    const teams = getTeams.all(userId).map((r) => r.team_id);
+    return { id: user.id, roles: [user.role], attr: { teams } };
   }
 
   return {
@@ -22,7 +26,7 @@ export async function open(db) {
       if (!principal || !doc) return false;
       const result = await cerbos.checkResource({
         principal,
-        resource: { kind: 'document', id: doc.id },
+        resource: { kind: 'document', id: doc.id, attr: { team: doc.team_id } },
         actions: [action],
       });
       return result.isAllowed(action) === true;
@@ -38,7 +42,12 @@ export async function open(db) {
       });
       if (plan.kind === PlanKind.ALWAYS_ALLOWED) return allDocs.all().map((r) => r.id);
       if (plan.kind === PlanKind.ALWAYS_DENIED) return [];
-      throw new Error('conditional plans are not supported yet');
+      const params = [];
+      const where = planToSql(plan.condition, params);
+      return db
+        .prepare(`SELECT d.id FROM documents d WHERE ${where}`)
+        .all(...params)
+        .map((r) => r.id);
     },
 
     close() {
