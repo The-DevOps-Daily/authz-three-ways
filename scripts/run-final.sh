@@ -15,12 +15,20 @@ nice -n 19 node harness/bench-floor.js --out=results/final/floor.json | tee resu
 ./scripts/quiet.sh
 nice -n 19 node harness/lookup-pages.js --tree=$tree --out=results/final/lookup-pages.json | tee results/final/lookup-pages.txt
 ./scripts/quiet.sh
+nice -n 19 node harness/spicedb-list-cache.js --tree=$tree --out=results/final/spicedb-list-cache.json | tee results/final/spicedb-list-cache.txt
+./scripts/quiet.sh
+nice -n 19 node scripts/variant.js cerbos-in-subquery | tee results/final/variant-cerbos-in-subquery.txt
+./scripts/quiet.sh
 nice -n 19 node harness/spicedb-page.js --tree=$tree --out=results/final/spicedb-page.json | tee results/final/spicedb-page.txt
 for rep in 1 2 3; do
   ./scripts/quiet.sh
   nice -n 19 node harness/bench-check.js --step=4 --tree=$tree --docs=10000 --samples=10000 --warmup=1000 \
     --seed=$((100 + rep)) --out=results/final/check-$rep.json --raw=results/final/check-$rep-raw.json \
     | tee results/final/check-$rep.txt
+  ./scripts/quiet.sh
+  # The same checks repeating: 100 triples, drawn with replacement.
+  nice -n 19 node harness/bench-check.js --step=4 --tree=$tree --docs=10000 --samples=10000 --warmup=1000 \
+    --seed=$((200 + rep)) --pool=100 --out=results/final/check-hot-$rep.json | tee results/final/check-hot-$rep.txt
   ./scripts/quiet.sh
   nice -n 19 node harness/bench-list.js --step=4 --tree=$tree --docs=1000,10000 --iters=20 --warmup=3 \
     --out=results/final/list-$rep.json | tee results/final/list-$rep.txt

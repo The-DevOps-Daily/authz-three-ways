@@ -1,7 +1,9 @@
 // Single-check latency. Random (user, action, document) triples from a seeded
 // generated world, concurrency 1, the three approaches interleaved per sample
 // in rotating order so drift on the machine lands on all of them equally.
-//   node harness/bench-check.js --step=4 --docs=10000 --samples=10000 --out=file [--raw=file]
+// --pool=N draws every sample from a fixed set of N triples instead, so the
+// same checks repeat, as they do when users reopen the same documents.
+//   node harness/bench-check.js --step=4 --docs=10000 --samples=10000 --out=file [--raw=file] [--pool=100]
 import { setTimeout as sleep } from 'node:timers/promises';
 import { args, mulberry32, pick, stamp, summarize, writeJson, now } from './lib.js';
 import { generateWorld } from './world.js';
@@ -22,10 +24,12 @@ const world = generateWorld({ docs });
 const { createDb } = await loadApp(a.tree);
 const db = createDb(world);
 const stop = await startServers(a.tree, names);
-const st = stamp(a.tree, { step, docs, samples, warmup, seed: Number(a.seed), approaches: names });
+const st = stamp(a.tree, { step, docs, samples, warmup, seed: Number(a.seed), pool: Number(a.pool ?? 0), approaches: names });
 
 const rng = mulberry32(Number(a.seed));
-const triple = () => [pick(rng, world.users).id, pick(rng, ACTIONS), pick(rng, world.documents).id];
+const fresh = () => [pick(rng, world.users).id, pick(rng, ACTIONS), pick(rng, world.documents).id];
+const pool = Array.from({ length: Number(a.pool ?? 0) }, fresh);
+const triple = () => (pool.length ? pick(rng, pool) : fresh());
 
 const out = { stamp: st, approaches: {} };
 try {
