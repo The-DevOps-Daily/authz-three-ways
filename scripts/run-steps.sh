@@ -2,6 +2,8 @@
 # Run correctness and both benchmarks against the code of every step, from the
 # step tags. Writes results/steps/step<N>-{correctness,check,list}.{json,txt}.
 set -euo pipefail
+# Per-step runs gate on a looser load than the headline runs in run-final.sh.
+export QUIET_LOAD=${QUIET_LOAD:-1.5} QUIET_MAX=${QUIET_MAX:-900}
 cd "$(dirname "$0")/.."
 [ -x .bin/cerbos ] && [ -x .bin/spicedb ] || ./scripts/fetch-binaries.sh
 mkdir -p results/steps
