@@ -10,7 +10,7 @@ export function createDb(world, path = ':memory:') {
   for (const f of readdirSync(dir).filter((f) => f.endsWith('.sql')).sort()) {
     db.exec(readFileSync(new URL(f, dir), 'utf8'));
   }
-  const insertUser = db.prepare('INSERT INTO users (id, role) VALUES (?, ?)');
+  const insertUser = db.prepare('INSERT INTO users (id, role, contractor) VALUES (?, ?, ?)');
   const insertTeam = db.prepare('INSERT INTO teams (id, name) VALUES (?, ?)');
   const insertMember = db.prepare('INSERT INTO team_members (team_id, user_id) VALUES (?, ?)');
   const insertDoc = db.prepare('INSERT INTO documents (id, title, team_id) VALUES (?, ?, ?)');
@@ -18,7 +18,7 @@ export function createDb(world, path = ':memory:') {
   db.exec('BEGIN');
   for (const t of world.teams) insertTeam.run(t, `Team ${t}`);
   for (const u of world.users) {
-    insertUser.run(u.id, u.role);
+    insertUser.run(u.id, u.role, u.contractor ? 1 : 0);
     for (const t of u.teams) insertMember.run(t, u.id);
   }
   for (const d of world.documents) insertDoc.run(d.id, `Document ${d.id}`, d.team);
