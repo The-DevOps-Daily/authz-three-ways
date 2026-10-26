@@ -1,0 +1,446 @@
+{
+  "steps": {
+    "1": {
+      "data": {
+        "commit": "c91a294",
+        "files": 2,
+        "added": 29,
+        "deleted": 0,
+        "changed": 29,
+        "policyLines": 0,
+        "codeLines": 29,
+        "detail": [
+          {
+            "file": "app/db.js",
+            "added": 20,
+            "deleted": 0,
+            "kind": "code"
+          },
+          {
+            "file": "app/migrations/001_init.sql",
+            "added": 9,
+            "deleted": 0,
+            "kind": "code"
+          }
+        ]
+      },
+      "ifs": {
+        "commit": "0b1d786",
+        "files": 1,
+        "added": 29,
+        "deleted": 0,
+        "changed": 29,
+        "policyLines": 0,
+        "codeLines": 29,
+        "detail": [
+          {
+            "file": "approaches/ifs/index.js",
+            "added": 29,
+            "deleted": 0,
+            "kind": "code"
+          }
+        ],
+        "sizeAfter": {
+          "files": 1,
+          "lines": 23
+        }
+      },
+      "cerbos": {
+        "commit": "250d7fb",
+        "files": 3,
+        "added": 73,
+        "deleted": 0,
+        "changed": 73,
+        "policyLines": 25,
+        "codeLines": 48,
+        "detail": [
+          {
+            "file": "approaches/cerbos/config.yaml",
+            "added": 9,
+            "deleted": 0,
+            "kind": "policy"
+          },
+          {
+            "file": "approaches/cerbos/index.js",
+            "added": 48,
+            "deleted": 0,
+            "kind": "code"
+          },
+          {
+            "file": "approaches/cerbos/policies/document.yaml",
+            "added": 16,
+            "deleted": 0,
+            "kind": "policy"
+          }
+        ],
+        "sizeAfter": {
+          "files": 3,
+          "lines": 62
+        }
+      },
+      "spicedb": {
+        "commit": "18bb5a6",
+        "files": 3,
+        "added": 133,
+        "deleted": 0,
+        "changed": 133,
+        "policyLines": 19,
+        "codeLines": 114,
+        "detail": [
+          {
+            "file": "approaches/spicedb/index.js",
+            "added": 72,
+            "deleted": 0,
+            "kind": "code"
+          },
+          {
+            "file": "approaches/spicedb/schema.zed",
+            "added": 19,
+            "deleted": 0,
+            "kind": "policy"
+          },
+          {
+            "file": "approaches/spicedb/sync.js",
+            "added": 42,
+            "deleted": 0,
+            "kind": "code"
+          }
+        ],
+        "sizeAfter": {
+          "files": 3,
+          "lines": 112
+        }
+      }
+    },
+    "2": {
+      "data": {
+        "commit": "002b918",
+        "files": 2,
+        "added": 23,
+        "deleted": 3,
+        "changed": 26,
+        "policyLines": 0,
+        "codeLines": 26,
+        "detail": [
+          {
+            "file": "app/db.js",
+            "added": 9,
+            "deleted": 3,
+            "kind": "code"
+          },
+          {
+            "file": "app/migrations/002_teams.sql",
+            "added": 14,
+            "deleted": 0,
+            "kind": "code"
+          }
+        ]
+      },
+      "ifs": {
+        "commit": "1b55d1a",
+        "files": 1,
+        "added": 10,
+        "deleted": 2,
+        "changed": 12,
+        "policyLines": 0,
+        "codeLines": 12,
+        "detail": [
+          {
+            "file": "approaches/ifs/index.js",
+            "added": 10,
+            "deleted": 2,
+            "kind": "code"
+          }
+        ],
+        "sizeAfter": {
+          "files": 1,
+          "lines": 30
+        }
+      },
+      "cerbos": {
+        "commit": "700993f",
+        "files": 4,
+        "added": 75,
+        "deleted": 7,
+        "changed": 82,
+        "policyLines": 22,
+        "codeLines": 60,
+        "detail": [
+          {
+            "file": "approaches/cerbos/index.js",
+            "added": 13,
+            "deleted": 4,
+            "kind": "code"
+          },
+          {
+            "file": "approaches/cerbos/plan-to-sql.js",
+            "added": 43,
+            "deleted": 0,
+            "kind": "code"
+          },
+          {
+            "file": "approaches/cerbos/policies/document.yaml",
+            "added": 4,
+            "deleted": 3,
+            "kind": "policy"
+          },
+          {
+            "file": "approaches/cerbos/policies/document_roles.yaml",
+            "added": 15,
+            "deleted": 0,
+            "kind": "policy"
+          }
+        ],
+        "sizeAfter": {
+          "files": 5,
+          "lines": 122
+        }
+      },
+      "spicedb": {
+        "commit": "675aaa2",
+        "files": 3,
+        "added": 25,
+        "deleted": 6,
+        "changed": 31,
+        "policyLines": 14,
+        "codeLines": 17,
+        "detail": [
+          {
+            "file": "approaches/spicedb/index.js",
+            "added": 5,
+            "deleted": 3,
+            "kind": "code"
+          },
+          {
+            "file": "approaches/spicedb/schema.zed",
+            "added": 12,
+            "deleted": 2,
+            "kind": "policy"
+          },
+          {
+            "file": "approaches/spicedb/sync.js",
+            "added": 8,
+            "deleted": 1,
+            "kind": "code"
+          }
+        ],
+        "sizeAfter": {
+          "files": 3,
+          "lines": 126
+        }
+      }
+    },
+    "3": {
+      "data": {
+        "commit": "41b30a6",
+        "files": 2,
+        "added": 9,
+        "deleted": 0,
+        "changed": 9,
+        "policyLines": 0,
+        "codeLines": 9,
+        "detail": [
+          {
+            "file": "app/db.js",
+            "added": 2,
+            "deleted": 0,
+            "kind": "code"
+          },
+          {
+            "file": "app/migrations/003_shares.sql",
+            "added": 7,
+            "deleted": 0,
+            "kind": "code"
+          }
+        ]
+      },
+      "ifs": {
+        "commit": "eb29e56",
+        "files": 1,
+        "added": 16,
+        "deleted": 4,
+        "changed": 20,
+        "policyLines": 0,
+        "codeLines": 20,
+        "detail": [
+          {
+            "file": "approaches/ifs/index.js",
+            "added": 16,
+            "deleted": 4,
+            "kind": "code"
+          }
+        ],
+        "sizeAfter": {
+          "files": 1,
+          "lines": 40
+        }
+      },
+      "cerbos": {
+        "commit": "af5ba43",
+        "files": 4,
+        "added": 38,
+        "deleted": 3,
+        "changed": 41,
+        "policyLines": 16,
+        "codeLines": 25,
+        "detail": [
+          {
+            "file": "approaches/cerbos/index.js",
+            "added": 12,
+            "deleted": 1,
+            "kind": "code"
+          },
+          {
+            "file": "approaches/cerbos/plan-to-sql.js",
+            "added": 12,
+            "deleted": 0,
+            "kind": "code"
+          },
+          {
+            "file": "approaches/cerbos/policies/document.yaml",
+            "added": 2,
+            "deleted": 2,
+            "kind": "policy"
+          },
+          {
+            "file": "approaches/cerbos/policies/document_roles.yaml",
+            "added": 12,
+            "deleted": 0,
+            "kind": "policy"
+          }
+        ],
+        "sizeAfter": {
+          "files": 5,
+          "lines": 152
+        }
+      },
+      "spicedb": {
+        "commit": "c2f4ba4",
+        "files": 2,
+        "added": 8,
+        "deleted": 2,
+        "changed": 10,
+        "policyLines": 7,
+        "codeLines": 3,
+        "detail": [
+          {
+            "file": "approaches/spicedb/schema.zed",
+            "added": 5,
+            "deleted": 2,
+            "kind": "policy"
+          },
+          {
+            "file": "approaches/spicedb/sync.js",
+            "added": 3,
+            "deleted": 0,
+            "kind": "code"
+          }
+        ],
+        "sizeAfter": {
+          "files": 3,
+          "lines": 131
+        }
+      }
+    },
+    "4": {
+      "data": {
+        "commit": "5f38b9a",
+        "files": 2,
+        "added": 3,
+        "deleted": 2,
+        "changed": 5,
+        "policyLines": 0,
+        "codeLines": 5,
+        "detail": [
+          {
+            "file": "app/db.js",
+            "added": 2,
+            "deleted": 2,
+            "kind": "code"
+          },
+          {
+            "file": "app/migrations/004_contractors.sql",
+            "added": 1,
+            "deleted": 0,
+            "kind": "code"
+          }
+        ]
+      },
+      "ifs": {
+        "commit": "05e4b2f",
+        "files": 1,
+        "added": 15,
+        "deleted": 7,
+        "changed": 22,
+        "policyLines": 0,
+        "codeLines": 22,
+        "detail": [
+          {
+            "file": "approaches/ifs/index.js",
+            "added": 15,
+            "deleted": 7,
+            "kind": "code"
+          }
+        ],
+        "sizeAfter": {
+          "files": 1,
+          "lines": 46
+        }
+      },
+      "cerbos": {
+        "commit": "ddf6590",
+        "files": 2,
+        "added": 13,
+        "deleted": 2,
+        "changed": 15,
+        "policyLines": 11,
+        "codeLines": 4,
+        "detail": [
+          {
+            "file": "approaches/cerbos/index.js",
+            "added": 2,
+            "deleted": 2,
+            "kind": "code"
+          },
+          {
+            "file": "approaches/cerbos/policies/document.yaml",
+            "added": 11,
+            "deleted": 0,
+            "kind": "policy"
+          }
+        ],
+        "sizeAfter": {
+          "files": 5,
+          "lines": 161
+        }
+      },
+      "spicedb": {
+        "commit": "6ca3db3",
+        "files": 2,
+        "added": 9,
+        "deleted": 4,
+        "changed": 13,
+        "policyLines": 10,
+        "codeLines": 3,
+        "detail": [
+          {
+            "file": "approaches/spicedb/schema.zed",
+            "added": 7,
+            "deleted": 3,
+            "kind": "policy"
+          },
+          {
+            "file": "approaches/spicedb/sync.js",
+            "added": 2,
+            "deleted": 1,
+            "kind": "code"
+          }
+        ],
+        "sizeAfter": {
+          "files": 3,
+          "lines": 134
+        }
+      }
+    }
+  }
+}

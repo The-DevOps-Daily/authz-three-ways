@@ -1,0 +1,25 @@
+ifs-forgot-the-list-query      mismatches 2 (list) caught
+     {"kind":"list","user":"cora","expected":["d1","d2"],"got":["d1","d2","d4"]}
+     {"kind":"list","user":"kai","expected":["d3","d4"],"got":["d1","d2","d3","d4"]}
+cerbos-forgot-the-attribute    mismatches 10 (check, list) caught
+     {"kind":"check","user":"cora","action":"view","document":"d4","step1":"allow","step2":"deny","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"cora","action":"edit","document":"d4","step1":"allow","step2":"deny","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"view","document":"d1","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"edit","document":"d1","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"delete","document":"d1","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"view","document":"d2","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"edit","document":"d2","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"delete","document":"d2","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"list","user":"cora","expected":["d1","d2"],"got":["d1","d2","d4"]}
+     {"kind":"list","user":"kai","expected":["d3","d4"],"got":["d1","d2","d3","d4"]}
+spicedb-forgot-the-sync        mismatches 10 (check, list) caught
+     {"kind":"check","user":"cora","action":"view","document":"d4","step1":"allow","step2":"deny","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"cora","action":"edit","document":"d4","step1":"allow","step2":"deny","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"view","document":"d1","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"edit","document":"d1","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"delete","document":"d1","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"view","document":"d2","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"edit","document":"d2","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"check","user":"kai","action":"delete","document":"d2","step1":"allow","step2":"allow","step3":"allow","step4":"deny","expected":"deny","got":"allow"}
+     {"kind":"list","user":"cora","expected":["d1","d2"],"got":["d1","d2","d4"]}
+     {"kind":"list","user":"kai","expected":["d3","d4"],"got":["d1","d2","d3","d4"]}
