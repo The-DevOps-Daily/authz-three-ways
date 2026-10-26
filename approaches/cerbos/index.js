@@ -7,7 +7,7 @@ import { planToSql } from './plan-to-sql.js';
 
 export async function open(db) {
   const cerbos = new GRPC(process.env.CERBOS_GRPC ?? '127.0.0.1:3593', { tls: false });
-  const getUser = db.prepare('SELECT id, role FROM users WHERE id = ?');
+  const getUser = db.prepare('SELECT id, role, contractor FROM users WHERE id = ?');
   const getTeams = db.prepare('SELECT team_id FROM team_members WHERE user_id = ?');
   const getDoc = db.prepare('SELECT id, team_id FROM documents WHERE id = ?');
   const getShares = db.prepare('SELECT user_id, level FROM shares WHERE document_id = ?');
@@ -17,7 +17,7 @@ export async function open(db) {
     const user = getUser.get(userId);
     if (!user) return null;
     const teams = getTeams.all(userId).map((r) => r.team_id);
-    return { id: user.id, roles: [user.role], attr: { teams } };
+    return { id: user.id, roles: [user.role], attr: { teams, contractor: user.contractor === 1 } };
   }
 
   function resourceOf(doc) {

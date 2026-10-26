@@ -15,3 +15,14 @@ resourcePolicy:
     - actions: [view, edit, delete]
       effect: EFFECT_ALLOW
       roles: [admin]
+
+    # Contractors get nothing outside their own teams, whatever else grants it.
+    - actions: ["*"]
+      effect: EFFECT_DENY
+      roles: ["*"]
+      condition:
+        match:
+          all:
+            of:
+              - expr: request.principal.attr.contractor == true
+              - expr: "!(request.resource.attr.team in request.principal.attr.teams)"
