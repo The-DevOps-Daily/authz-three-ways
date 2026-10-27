@@ -1,0 +1,11 @@
+step 4 ifs      84 checks + 7 lists: all match
+step 4 cerbos   84 checks + 7 lists: all match
+step 4 docs=10000 admin      (u006) visible {"ifs":10000,"cerbos":10000} agree=true
+    ifs      median 25.406 ms  min 23.514 ms  max 41.826 ms  errors 0
+    cerbos   median 31.461 ms  min 30.196 ms  max 39.949 ms  errors 0
+step 4 docs=10000 member     (u007) visible {"ifs":1020,"cerbos":1020} agree=true
+    ifs      median 4.243 ms  min 4.195 ms  max 4.47 ms  errors 0
+    cerbos   median 11.979 ms  min 11.65 ms  max 14.488 ms  errors 0
+step 4 docs=10000 contractor (u005) visible {"ifs":510,"cerbos":510} agree=true
+    ifs      median 2.359 ms  min 2.22 ms  max 7.797 ms  errors 0
+    cerbos   median 9.858 ms  min 9.387 ms  max 21.068 ms  errors 0

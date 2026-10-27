@@ -1,0 +1,447 @@
+{
+  "stamp": {
+    "startedAt": "2026-10-27T00:10:46.245Z",
+    "harnessCommit": "2806eaa",
+    "harnessDirty": true,
+    "treeHash": "1de719e9516cb38c",
+    "harnessHash": "3687ee219098a253",
+    "node": "v24.22.1",
+    "cerbos": "0.57.0\nBuild timestamp: 2026-10-23T07:10:11Z\nBuild commit: 43125124efe4b50b83d894635fb2f691e980dc62\nGo version: go1.27.3\nvcs: git\nvcs.revision: 43125124efe4b50b83d894635fb2f691e980dc62\nvcs.time: 2026-10-23T07:07:25Z\nvcs.modified: false",
+    "spicedb": "spicedb v1.57.0",
+    "cpu": "Cortex-A72",
+    "cores": 4,
+    "memGiB": 3.7,
+    "kernel": "6.12.62+rpt-rpi-v8",
+    "arch": "arm64",
+    "loadavgAtStart": [
+      1.03,
+      1.62,
+      1.89
+    ],
+    "step": 4,
+    "iters": 20,
+    "warmup": 3,
+    "approaches": [
+      "ifs",
+      "cerbos",
+      "spicedb"
+    ]
+  },
+  "runs": [
+    {
+      "docs": 1000,
+      "open": {
+        "ifs": {
+          "openMs": 0.8
+        },
+        "cerbos": {
+          "openMs": 10.1
+        },
+        "spicedb": {
+          "openMs": 763
+        }
+      },
+      "profiles": {
+        "admin": {
+          "user": "u006",
+          "visible": {
+            "ifs": 1000,
+            "cerbos": 1000,
+            "spicedb": 1000
+          },
+          "agree": true,
+          "info": {
+            "ifs": null,
+            "cerbos": null,
+            "spicedb": {
+              "requests": 2
+            }
+          },
+          "latencyMs": {
+            "ifs": {
+              "n": 20,
+              "min": 2.569,
+              "p50": 2.678,
+              "p95": 3.574,
+              "p99": 3.577,
+              "p999": 3.577,
+              "max": 3.577,
+              "mean": 2.863
+            },
+            "cerbos": {
+              "n": 20,
+              "min": 8.742,
+              "p50": 9.565,
+              "p95": 15.871,
+              "p99": 23.726,
+              "p999": 23.726,
+              "max": 23.726,
+              "mean": 10.603
+            },
+            "spicedb": {
+              "n": 20,
+              "min": 74.529,
+              "p50": 88,
+              "p95": 106.163,
+              "p99": 129.81,
+              "p999": 129.81,
+              "max": 129.81,
+              "mean": 91.333
+            }
+          },
+          "errors": {
+            "ifs": {
+              "count": 0,
+              "all": []
+            },
+            "cerbos": {
+              "count": 0,
+              "all": []
+            },
+            "spicedb": {
+              "count": 0,
+              "all": []
+            }
+          }
+        },
+        "member": {
+          "user": "u007",
+          "visible": {
+            "ifs": 96,
+            "cerbos": 96,
+            "spicedb": 96
+          },
+          "agree": true,
+          "info": {
+            "ifs": null,
+            "cerbos": null,
+            "spicedb": {
+              "requests": 1
+            }
+          },
+          "latencyMs": {
+            "ifs": {
+              "n": 20,
+              "min": 0.484,
+              "p50": 0.574,
+              "p95": 0.771,
+              "p99": 0.776,
+              "p999": 0.776,
+              "max": 0.776,
+              "mean": 0.588
+            },
+            "cerbos": {
+              "n": 20,
+              "min": 9.263,
+              "p50": 10.178,
+              "p95": 11.973,
+              "p99": 16.253,
+              "p999": 16.253,
+              "max": 16.253,
+              "mean": 10.534
+            },
+            "spicedb": {
+              "n": 20,
+              "min": 9.429,
+              "p50": 9.789,
+              "p95": 13.552,
+              "p99": 16.771,
+              "p999": 16.771,
+              "max": 16.771,
+              "mean": 10.751
+            }
+          },
+          "errors": {
+            "ifs": {
+              "count": 0,
+              "all": []
+            },
+            "cerbos": {
+              "count": 0,
+              "all": []
+            },
+            "spicedb": {
+              "count": 0,
+              "all": []
+            }
+          }
+        },
+        "contractor": {
+          "user": "u005",
+          "visible": {
+            "ifs": 49,
+            "cerbos": 49,
+            "spicedb": 49
+          },
+          "agree": true,
+          "info": {
+            "ifs": null,
+            "cerbos": null,
+            "spicedb": {
+              "requests": 1
+            }
+          },
+          "latencyMs": {
+            "ifs": {
+              "n": 20,
+              "min": 0.371,
+              "p50": 0.464,
+              "p95": 0.515,
+              "p99": 0.524,
+              "p999": 0.524,
+              "max": 0.524,
+              "mean": 0.46
+            },
+            "cerbos": {
+              "n": 20,
+              "min": 7.734,
+              "p50": 8.098,
+              "p95": 14.099,
+              "p99": 16.775,
+              "p999": 16.775,
+              "max": 16.775,
+              "mean": 8.928
+            },
+            "spicedb": {
+              "n": 20,
+              "min": 7.082,
+              "p50": 7.537,
+              "p95": 8.206,
+              "p99": 8.822,
+              "p999": 8.822,
+              "max": 8.822,
+              "mean": 7.639
+            }
+          },
+          "errors": {
+            "ifs": {
+              "count": 0,
+              "all": []
+            },
+            "cerbos": {
+              "count": 0,
+              "all": []
+            },
+            "spicedb": {
+              "count": 0,
+              "all": []
+            }
+          }
+        }
+      },
+      "loadavgAtEnd": [
+        0.95,
+        1.58,
+        1.87
+      ]
+    },
+    {
+      "docs": 10000,
+      "open": {
+        "ifs": {
+          "openMs": 1
+        },
+        "cerbos": {
+          "openMs": 2.3
+        },
+        "spicedb": {
+          "openMs": 4390.9
+        }
+      },
+      "profiles": {
+        "admin": {
+          "user": "u006",
+          "visible": {
+            "ifs": 10000,
+            "cerbos": 10000,
+            "spicedb": 10000
+          },
+          "agree": true,
+          "info": {
+            "ifs": null,
+            "cerbos": null,
+            "spicedb": {
+              "requests": 11
+            }
+          },
+          "latencyMs": {
+            "ifs": {
+              "n": 20,
+              "min": 24.894,
+              "p50": 25.382,
+              "p95": 26.895,
+              "p99": 27.605,
+              "p999": 27.605,
+              "max": 27.605,
+              "mean": 25.575
+            },
+            "cerbos": {
+              "n": 20,
+              "min": 29.716,
+              "p50": 31.268,
+              "p95": 42.436,
+              "p99": 43.143,
+              "p999": 43.143,
+              "max": 43.143,
+              "mean": 32.305
+            },
+            "spicedb": {
+              "n": 20,
+              "min": 717.408,
+              "p50": 769.35,
+              "p95": 3642.955,
+              "p99": 3643.776,
+              "p999": 3643.776,
+              "max": 3643.776,
+              "mean": 1889.938
+            }
+          },
+          "errors": {
+            "ifs": {
+              "count": 0,
+              "all": []
+            },
+            "cerbos": {
+              "count": 0,
+              "all": []
+            },
+            "spicedb": {
+              "count": 0,
+              "all": []
+            }
+          }
+        },
+        "member": {
+          "user": "u007",
+          "visible": {
+            "ifs": 1020,
+            "cerbos": 1020,
+            "spicedb": 1020
+          },
+          "agree": true,
+          "info": {
+            "ifs": null,
+            "cerbos": null,
+            "spicedb": {
+              "requests": 2
+            }
+          },
+          "latencyMs": {
+            "ifs": {
+              "n": 20,
+              "min": 4.298,
+              "p50": 4.404,
+              "p95": 4.822,
+              "p99": 5.172,
+              "p999": 5.172,
+              "max": 5.172,
+              "mean": 4.474
+            },
+            "cerbos": {
+              "n": 20,
+              "min": 30.812,
+              "p50": 32.377,
+              "p95": 36.925,
+              "p99": 39.527,
+              "p999": 39.527,
+              "max": 39.527,
+              "mean": 33.292
+            },
+            "spicedb": {
+              "n": 20,
+              "min": 72.276,
+              "p50": 74.433,
+              "p95": 118.359,
+              "p99": 384.073,
+              "p999": 384.073,
+              "max": 384.073,
+              "mean": 95.226
+            }
+          },
+          "errors": {
+            "ifs": {
+              "count": 0,
+              "all": []
+            },
+            "cerbos": {
+              "count": 0,
+              "all": []
+            },
+            "spicedb": {
+              "count": 0,
+              "all": []
+            }
+          }
+        },
+        "contractor": {
+          "user": "u005",
+          "visible": {
+            "ifs": 510,
+            "cerbos": 510,
+            "spicedb": 510
+          },
+          "agree": true,
+          "info": {
+            "ifs": null,
+            "cerbos": null,
+            "spicedb": {
+              "requests": 1
+            }
+          },
+          "latencyMs": {
+            "ifs": {
+              "n": 20,
+              "min": 2.278,
+              "p50": 2.435,
+              "p95": 2.619,
+              "p99": 3.298,
+              "p999": 3.298,
+              "max": 3.298,
+              "mean": 2.483
+            },
+            "cerbos": {
+              "n": 20,
+              "min": 9.012,
+              "p50": 9.382,
+              "p95": 10.421,
+              "p99": 10.422,
+              "p999": 10.422,
+              "max": 10.422,
+              "mean": 9.512
+            },
+            "spicedb": {
+              "n": 20,
+              "min": 35.822,
+              "p50": 37.581,
+              "p95": 43.174,
+              "p99": 54.024,
+              "p999": 54.024,
+              "max": 54.024,
+              "mean": 38.611
+            }
+          },
+          "errors": {
+            "ifs": {
+              "count": 0,
+              "all": []
+            },
+            "cerbos": {
+              "count": 0,
+              "all": []
+            },
+            "spicedb": {
+              "count": 0,
+              "all": []
+            }
+          }
+        }
+      },
+      "loadavgAtEnd": [
+        2.39,
+        1.86,
+        1.95
+      ]
+    }
+  ],
+  "problems": 0
+}

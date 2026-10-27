@@ -1,0 +1,9 @@
+admin      limit 0     visible 10000 requests 1 median 721.909 ms
+admin      limit 1000  visible 10000 requests 11 median 890.359 ms
+admin      limit 100   visible 10000 requests 106 median 7170.1 ms
+member     limit 0     visible 1020 requests 1 median 68.275 ms
+member     limit 1000  visible 1020 requests 2 median 72.398 ms
+member     limit 100   visible 1020 requests 11 median 100.564 ms
+contractor limit 0     visible 510 requests 1 median 35.428 ms
+contractor limit 1000  visible 510 requests 1 median 35.469 ms
+contractor limit 100   visible 510 requests 6 median 52.294 ms

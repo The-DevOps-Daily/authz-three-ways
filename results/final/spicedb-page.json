@@ -1,0 +1,126 @@
+{
+  "stamp": {
+    "startedAt": "2026-10-27T00:19:55.380Z",
+    "harnessCommit": "1de8d0b",
+    "harnessDirty": false,
+    "treeHash": "1de719e9516cb38c",
+    "harnessHash": "3687ee219098a253",
+    "node": "v24.22.1",
+    "cerbos": "0.57.0\nBuild timestamp: 2026-10-23T07:10:11Z\nBuild commit: 43125124efe4b50b83d894635fb2f691e980dc62\nGo version: go1.27.3\nvcs: git\nvcs.revision: 43125124efe4b50b83d894635fb2f691e980dc62\nvcs.time: 2026-10-23T07:07:25Z\nvcs.modified: false",
+    "spicedb": "spicedb v1.57.0",
+    "cpu": "Cortex-A72",
+    "cores": 4,
+    "memGiB": 3.7,
+    "kernel": "6.12.62+rpt-rpi-v8",
+    "arch": "arm64",
+    "loadavgAtStart": [
+      0.72,
+      1.31,
+      1.66
+    ],
+    "docs": 10000,
+    "pageSize": 50,
+    "batch": 100,
+    "iters": 10,
+    "warmup": 2
+  },
+  "profiles": {
+    "admin": {
+      "user": "u006",
+      "agree": true,
+      "lookupAllThenFirst50": {
+        "visible": 10000,
+        "requests": 11,
+        "latencyMs": {
+          "n": 10,
+          "min": 719.468,
+          "p50": 785.911,
+          "p95": 3624.693,
+          "p99": 3624.693,
+          "p999": 3624.693,
+          "max": 3624.693,
+          "mean": 1903.976
+        }
+      },
+      "bulkCheckCandidates": {
+        "requests": 1,
+        "scanned": 100,
+        "latencyMs": {
+          "n": 10,
+          "min": 15.873,
+          "p50": 17.97,
+          "p95": 51.861,
+          "p99": 51.861,
+          "p999": 51.861,
+          "max": 51.861,
+          "mean": 28.379
+        }
+      }
+    },
+    "member": {
+      "user": "u007",
+      "agree": true,
+      "lookupAllThenFirst50": {
+        "visible": 1020,
+        "requests": 2,
+        "latencyMs": {
+          "n": 10,
+          "min": 71.852,
+          "p50": 78.387,
+          "p95": 365.664,
+          "p99": 365.664,
+          "p999": 365.664,
+          "max": 365.664,
+          "mean": 107.863
+        }
+      },
+      "bulkCheckCandidates": {
+        "requests": 5,
+        "scanned": 500,
+        "latencyMs": {
+          "n": 10,
+          "min": 74.76,
+          "p50": 78.175,
+          "p95": 202.633,
+          "p99": 202.633,
+          "p999": 202.633,
+          "max": 202.633,
+          "mean": 97.965
+        }
+      }
+    },
+    "contractor": {
+      "user": "u005",
+      "agree": true,
+      "lookupAllThenFirst50": {
+        "visible": 510,
+        "requests": 1,
+        "latencyMs": {
+          "n": 10,
+          "min": 36.218,
+          "p50": 37.347,
+          "p95": 41.187,
+          "p99": 41.187,
+          "p999": 41.187,
+          "max": 41.187,
+          "mean": 37.844
+        }
+      },
+      "bulkCheckCandidates": {
+        "requests": 11,
+        "scanned": 1100,
+        "latencyMs": {
+          "n": 10,
+          "min": 162.511,
+          "p50": 167.32,
+          "p95": 216.809,
+          "p99": 216.809,
+          "p999": 216.809,
+          "max": 216.809,
+          "mean": 175.521
+        }
+      }
+    }
+  },
+  "problems": 0
+}

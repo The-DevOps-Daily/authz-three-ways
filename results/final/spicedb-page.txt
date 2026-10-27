@@ -1,0 +1,3 @@
+admin      agree=true  LookupResources then first 50: median 785.911 ms  |  CheckBulkPermissions over 100 candidates in 1 calls: median 17.97 ms
+member     agree=true  LookupResources then first 50: median 78.387 ms  |  CheckBulkPermissions over 500 candidates in 5 calls: median 78.175 ms
+contractor agree=true  LookupResources then first 50: median 37.347 ms  |  CheckBulkPermissions over 1100 candidates in 11 calls: median 167.32 ms

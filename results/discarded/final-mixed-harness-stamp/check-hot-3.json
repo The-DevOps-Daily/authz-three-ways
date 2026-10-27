@@ -1,0 +1,114 @@
+{
+  "stamp": {
+    "startedAt": "2026-10-27T00:08:43.086Z",
+    "harnessCommit": "2806eaa",
+    "harnessDirty": true,
+    "treeHash": "1de719e9516cb38c",
+    "harnessHash": "3687ee219098a253",
+    "node": "v24.22.1",
+    "cerbos": "0.57.0\nBuild timestamp: 2026-10-23T07:10:11Z\nBuild commit: 43125124efe4b50b83d894635fb2f691e980dc62\nGo version: go1.27.3\nvcs: git\nvcs.revision: 43125124efe4b50b83d894635fb2f691e980dc62\nvcs.time: 2026-10-23T07:07:25Z\nvcs.modified: false",
+    "spicedb": "spicedb v1.57.0",
+    "cpu": "Cortex-A72",
+    "cores": 4,
+    "memGiB": 3.7,
+    "kernel": "6.12.62+rpt-rpi-v8",
+    "arch": "arm64",
+    "loadavgAtStart": [
+      1.23,
+      1.88,
+      2
+    ],
+    "step": 4,
+    "docs": 10000,
+    "samples": 10000,
+    "warmup": 1000,
+    "seed": 203,
+    "pool": 100,
+    "approaches": [
+      "ifs",
+      "cerbos",
+      "spicedb"
+    ]
+  },
+  "approaches": {
+    "ifs": {
+      "openMs": 1.1,
+      "allowed": 718,
+      "errors": {
+        "count": 0,
+        "all": []
+      },
+      "latencyMs": {
+        "n": 10000,
+        "min": 0.121,
+        "p50": 0.14,
+        "p95": 0.185,
+        "p99": 0.232,
+        "p999": 0.463,
+        "max": 3.326,
+        "mean": 0.147
+      }
+    },
+    "cerbos": {
+      "openMs": 10.9,
+      "allowed": 718,
+      "errors": {
+        "count": 0,
+        "all": []
+      },
+      "latencyMs": {
+        "n": 10000,
+        "min": 3.361,
+        "p50": 3.765,
+        "p95": 4.838,
+        "p99": 7.698,
+        "p999": 29.911,
+        "max": 62.022,
+        "mean": 3.991
+      }
+    },
+    "spicedb": {
+      "openMs": 4266.3,
+      "allowed": 718,
+      "errors": {
+        "count": 1,
+        "all": [
+          {
+            "sample": 7406,
+            "atMs": 63975,
+            "message": "14 UNAVAILABLE: Write error: Stream closed with error code NGHTTP2_REFUSED_STREAM"
+          }
+        ]
+      },
+      "latencyMs": {
+        "n": 9999,
+        "min": 2.482,
+        "p50": 2.824,
+        "p95": 12.836,
+        "p99": 15.723,
+        "p999": 30.478,
+        "max": 56.434,
+        "mean": 4.421
+      }
+    }
+  },
+  "disagreements": {
+    "count": 0,
+    "first": []
+  },
+  "loadavgAtEnd": [
+    1.33,
+    1.71,
+    1.92
+  ],
+  "cerbosServerHandlingMs": {
+    "n": 10000,
+    "min": 0.513,
+    "p50": 0.625,
+    "p95": 0.805,
+    "p99": 1.161,
+    "p999": 3.806,
+    "max": 16.053,
+    "mean": 0.65
+  }
+}

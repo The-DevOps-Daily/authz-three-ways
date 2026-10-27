@@ -1,0 +1,48 @@
+{
+  "stamp": {
+    "startedAt": "2026-10-26T23:08:35.380Z",
+    "harnessCommit": "a7ffc19",
+    "harnessDirty": false,
+    "treeHash": "e1aa6768a191c1e4",
+    "harnessHash": "35fa82c8f375a893",
+    "node": "v24.22.1",
+    "cerbos": "0.57.0\nBuild timestamp: 2026-10-23T07:10:11Z\nBuild commit: 43125124efe4b50b83d894635fb2f691e980dc62\nGo version: go1.27.3\nvcs: git\nvcs.revision: 43125124efe4b50b83d894635fb2f691e980dc62\nvcs.time: 2026-10-23T07:07:25Z\nvcs.modified: false",
+    "spicedb": "spicedb v1.57.0",
+    "cpu": "Cortex-A72",
+    "cores": 4,
+    "memGiB": 3.7,
+    "kernel": "6.12.62+rpt-rpi-v8",
+    "arch": "arm64",
+    "loadavgAtStart": [
+      1.75,
+      1.82,
+      1.82
+    ],
+    "step": 1,
+    "approaches": [
+      "ifs",
+      "cerbos",
+      "spicedb"
+    ]
+  },
+  "approaches": {
+    "ifs": {
+      "checks": 84,
+      "lists": 7,
+      "mismatches": 0,
+      "details": []
+    },
+    "cerbos": {
+      "checks": 84,
+      "lists": 7,
+      "mismatches": 0,
+      "details": []
+    },
+    "spicedb": {
+      "checks": 84,
+      "lists": 7,
+      "mismatches": 0,
+      "details": []
+    }
+  }
+}

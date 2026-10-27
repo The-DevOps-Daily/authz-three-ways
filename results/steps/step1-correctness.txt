@@ -1,0 +1,3 @@
+step 1 ifs      84 checks + 7 lists: all match
+step 1 cerbos   84 checks + 7 lists: all match
+step 1 spicedb  84 checks + 7 lists: all match

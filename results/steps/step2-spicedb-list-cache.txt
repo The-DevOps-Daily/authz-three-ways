@@ -1,0 +1,4 @@
+admin      visible 10000  first in a new 5 s window: median 844.687 ms  same revision again: median 692.349 ms
+member     visible 998  first in a new 5 s window: median 95.198 ms  same revision again: median 71.305 ms
+contractor visible 510  first in a new 5 s window: median 57.542 ms  same revision again: median 37.808 ms
+problems (wrong answers or a reused revision): 0

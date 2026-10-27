@@ -1,0 +1,24 @@
+step 4 docs=1000 admin      (u006) visible {"ifs":1000,"cerbos":1000,"spicedb":1000} agree=true crosscheck={"ifs":{"documents":1000,"listVsCheckMismatches":0},"cerbos":{"documents":1000,"listVsCheckMismatches":0},"spicedb":{"documents":1000,"listVsCheckMismatches":0}}
+    ifs      median 2.751 ms  min 2.578 ms  max 3.17 ms  errors 0
+    cerbos   median 8.259 ms  min 8.068 ms  max 9.238 ms  errors 0
+    spicedb  median 96.687 ms  min 77.637 ms  max 174.937 ms  errors 0
+step 4 docs=1000 member     (u007) visible {"ifs":96,"cerbos":96,"spicedb":96} agree=true crosscheck={"ifs":{"documents":1000,"listVsCheckMismatches":0},"cerbos":{"documents":1000,"listVsCheckMismatches":0},"spicedb":{"documents":1000,"listVsCheckMismatches":0}}
+    ifs      median 0.582 ms  min 0.491 ms  max 0.702 ms  errors 0
+    cerbos   median 8.893 ms  min 8.682 ms  max 11.303 ms  errors 0
+    spicedb  median 10.3 ms  min 9.991 ms  max 13.208 ms  errors 0
+step 4 docs=1000 contractor (u005) visible {"ifs":49,"cerbos":49,"spicedb":49} agree=true crosscheck={"ifs":{"documents":1000,"listVsCheckMismatches":0},"cerbos":{"documents":1000,"listVsCheckMismatches":0},"spicedb":{"documents":1000,"listVsCheckMismatches":0}}
+    ifs      median 0.445 ms  min 0.355 ms  max 1.264 ms  errors 0
+    cerbos   median 7.194 ms  min 6.881 ms  max 13.39 ms  errors 0
+    spicedb  median 6.714 ms  min 6.172 ms  max 30.038 ms  errors 0
+step 4 docs=10000 admin      (u006) visible {"ifs":10000,"cerbos":10000,"spicedb":10000} agree=true
+    ifs      median 25.623 ms  min 24.893 ms  max 26.752 ms  errors 0
+    cerbos   median 29.495 ms  min 29.06 ms  max 39.47 ms  errors 0
+    spicedb  median 815.047 ms  min 748.029 ms  max 4230.786 ms  errors 0
+step 4 docs=10000 member     (u007) visible {"ifs":1020,"cerbos":1020,"spicedb":1020} agree=true
+    ifs      median 4.351 ms  min 4.074 ms  max 5.348 ms  errors 0
+    cerbos   median 32.875 ms  min 31.149 ms  max 64.898 ms  errors 0
+    spicedb  median 76.585 ms  min 72.1 ms  max 154.296 ms  errors 0
+step 4 docs=10000 contractor (u005) visible {"ifs":510,"cerbos":510,"spicedb":510} agree=true
+    ifs      median 2.368 ms  min 2.296 ms  max 2.595 ms  errors 0
+    cerbos   median 9.01 ms  min 8.779 ms  max 10.413 ms  errors 0
+    spicedb  median 37.43 ms  min 35.807 ms  max 51.184 ms  errors 0

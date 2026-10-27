@@ -1,0 +1,13 @@
+ada   KIND_ALWAYS_ALLOWED
+ed    KIND_CONDITIONAL
+      WHERE ((d.team_id = ? OR EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'view' AND s.user_id = ?)) OR EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'edit' AND s.user_id = ?))  ["eng","ed","ed"]
+vi    KIND_CONDITIONAL
+      WHERE ((d.team_id IN (?, ?) OR EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'view' AND s.user_id = ?)) OR EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'edit' AND s.user_id = ?))  ["eng","sales","vi","vi"]
+sam   KIND_CONDITIONAL
+      WHERE ((d.team_id = ? OR EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'view' AND s.user_id = ?)) OR EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'edit' AND s.user_id = ?))  ["sales","sam","sam"]
+cora  KIND_CONDITIONAL
+      WHERE (d.team_id = ? AND ((d.team_id = ? OR EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'view' AND s.user_id = ?)) OR EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'edit' AND s.user_id = ?)))  ["eng","eng","cora","cora"]
+nell  KIND_CONDITIONAL
+      WHERE (EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'view' AND s.user_id = ?) OR EXISTS (SELECT 1 FROM shares s WHERE s.document_id = d.id AND s.level = 'edit' AND s.user_id = ?))  ["nell","nell"]
+kai   KIND_CONDITIONAL
+      WHERE d.team_id = ?  ["sales"]

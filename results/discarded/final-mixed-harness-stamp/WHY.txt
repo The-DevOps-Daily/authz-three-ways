@@ -1,0 +1,8 @@
+Discarded: the first full run of scripts/run-final.sh.
+
+harness/show-plans.js was added to harness/ while this run was in progress.
+No benchmark imports that file, but the stamp hashes the whole harness/
+folder, so the runs before and after the addition carry different harness
+hashes (cd9560a2e8fe47cb and 3687ee219098a253) and scripts/summary.js refuses
+to combine them. The suite was run again from a committed harness; the numbers
+in results/final/ come from that second run. These files are kept as recorded.

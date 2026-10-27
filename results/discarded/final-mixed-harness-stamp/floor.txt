@@ -1,0 +1,3 @@
+node-tcp-echo            p50 0.332 ms  p95 0.611 ms  p99 2.256 ms
+cerbos-serverinfo-grpc   p50 2.371 ms  p95 3.192 ms  p99 5.331 ms
+spicedb-readschema-grpc  p50 2.433 ms  p95 3.269 ms  p99 5.184 ms

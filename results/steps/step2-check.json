@@ -1,0 +1,107 @@
+{
+  "stamp": {
+    "startedAt": "2026-10-26T23:13:33.974Z",
+    "harnessCommit": "a7ffc19",
+    "harnessDirty": false,
+    "treeHash": "7392e24cd59ad7fd",
+    "harnessHash": "35fa82c8f375a893",
+    "node": "v24.22.1",
+    "cerbos": "0.57.0\nBuild timestamp: 2026-10-23T07:10:11Z\nBuild commit: 43125124efe4b50b83d894635fb2f691e980dc62\nGo version: go1.27.3\nvcs: git\nvcs.revision: 43125124efe4b50b83d894635fb2f691e980dc62\nvcs.time: 2026-10-23T07:07:25Z\nvcs.modified: false",
+    "spicedb": "spicedb v1.57.0",
+    "cpu": "Cortex-A72",
+    "cores": 4,
+    "memGiB": 3.7,
+    "kernel": "6.12.62+rpt-rpi-v8",
+    "arch": "arm64",
+    "loadavgAtStart": [
+      1.34,
+      1.68,
+      1.76
+    ],
+    "step": 2,
+    "docs": 10000,
+    "samples": 5000,
+    "warmup": 500,
+    "seed": 7,
+    "approaches": [
+      "ifs",
+      "cerbos",
+      "spicedb"
+    ]
+  },
+  "approaches": {
+    "ifs": {
+      "openMs": 0.6,
+      "allowed": 405,
+      "errors": {
+        "count": 0,
+        "all": []
+      },
+      "latencyMs": {
+        "n": 5000,
+        "min": 0.113,
+        "p50": 0.126,
+        "p95": 0.173,
+        "p99": 0.223,
+        "p999": 0.806,
+        "max": 2.275,
+        "mean": 0.135
+      }
+    },
+    "cerbos": {
+      "openMs": 14.1,
+      "allowed": 405,
+      "errors": {
+        "count": 0,
+        "all": []
+      },
+      "latencyMs": {
+        "n": 5000,
+        "min": 3.218,
+        "p50": 3.725,
+        "p95": 5.226,
+        "p99": 8.53,
+        "p999": 16.819,
+        "max": 36.137,
+        "mean": 3.984
+      }
+    },
+    "spicedb": {
+      "openMs": 3594.3,
+      "allowed": 405,
+      "errors": {
+        "count": 0,
+        "all": []
+      },
+      "latencyMs": {
+        "n": 5000,
+        "min": 8.065,
+        "p50": 9.023,
+        "p95": 13.202,
+        "p99": 17.858,
+        "p999": 43.458,
+        "max": 64.24,
+        "mean": 9.705
+      }
+    }
+  },
+  "disagreements": {
+    "count": 0,
+    "first": []
+  },
+  "loadavgAtEnd": [
+    1.98,
+    1.78,
+    1.79
+  ],
+  "cerbosServerHandlingMs": {
+    "n": 5000,
+    "min": 0.371,
+    "p50": 0.523,
+    "p95": 0.717,
+    "p99": 1.192,
+    "p999": 2.806,
+    "max": 8.258,
+    "mean": 0.554
+  }
+}

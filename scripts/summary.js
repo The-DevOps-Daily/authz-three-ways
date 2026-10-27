@@ -72,6 +72,19 @@ for (const r of lists) {
   }
 }
 
+const caches = load('results/steps', /-spicedb-list-cache\.json$/);
+if (caches.length) {
+  p();
+  p('## SpiceDB list per step, 10,000 documents: first call in a new 5 s window / same revision again, median ms');
+  p();
+  p('| Step | admin | member | contractor |');
+  p('| --- | --- | --- | --- |');
+  caches.forEach((r, i) => {
+    const c = (k) => `${fmt(r.profiles[k].coldMs.p50)} / ${fmt(r.profiles[k].warmMs.p50)} (${r.profiles[k].visible} visible)`;
+    p(`| ${i + 1} | ${c('admin')} | ${c('member')} | ${c('contractor')} |`);
+  });
+}
+
 // Final
 const fLists = load('results/final', /^list-\d+\.json$/);
 for (const [label, pattern] of [

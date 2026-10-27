@@ -1,0 +1,5 @@
+cerbos server-side handling (from its log): p50 0.627 ms  p99 1.185 ms
+step 4 docs=10000 ifs      p50 0.144 ms  p95 0.187 ms  p99 0.235 ms  max 14.899 ms  allowed 852/10000  errors 0
+step 4 docs=10000 cerbos   p50 3.833 ms  p95 5.049 ms  p99 8.359 ms  max 59.728 ms  allowed 852/10000  errors 0
+step 4 docs=10000 spicedb  p50 10.784 ms  p95 15.419 ms  p99 19.32 ms  max 218.285 ms  allowed 852/10000  errors 0
+disagreements: 0

@@ -1,0 +1,24 @@
+step 4 docs=1000 admin      (u006) visible {"ifs":1000,"cerbos":1000,"spicedb":1000} agree=true
+    ifs      median 2.642 ms  min 2.484 ms  max 4.772 ms  errors 0
+    cerbos   median 9.455 ms  min 8.654 ms  max 19.873 ms  errors 0
+    spicedb  median 85.361 ms  min 72.978 ms  max 119.638 ms  errors 0
+step 4 docs=1000 member     (u007) visible {"ifs":96,"cerbos":96,"spicedb":96} agree=true
+    ifs      median 0.593 ms  min 0.486 ms  max 1.119 ms  errors 0
+    cerbos   median 10.285 ms  min 9.547 ms  max 18.965 ms  errors 0
+    spicedb  median 10.439 ms  min 9.436 ms  max 24.71 ms  errors 0
+step 4 docs=1000 contractor (u005) visible {"ifs":49,"cerbos":49,"spicedb":49} agree=true
+    ifs      median 0.435 ms  min 0.343 ms  max 0.617 ms  errors 0
+    cerbos   median 7.875 ms  min 7.34 ms  max 9.289 ms  errors 0
+    spicedb  median 6.788 ms  min 6.381 ms  max 16.004 ms  errors 0
+step 4 docs=10000 admin      (u006) visible {"ifs":10000,"cerbos":10000,"spicedb":10000} agree=true
+    ifs      median 25.364 ms  min 24.568 ms  max 27.304 ms  errors 0
+    cerbos   median 30.353 ms  min 29.137 ms  max 38.455 ms  errors 0
+    spicedb  median 779.758 ms  min 726.996 ms  max 3653.23 ms  errors 0
+step 4 docs=10000 member     (u007) visible {"ifs":1020,"cerbos":1020,"spicedb":1020} agree=true
+    ifs      median 4.358 ms  min 4.027 ms  max 5.241 ms  errors 0
+    cerbos   median 31.275 ms  min 30.477 ms  max 55.371 ms  errors 0
+    spicedb  median 77.114 ms  min 72.669 ms  max 116.431 ms  errors 0
+step 4 docs=10000 contractor (u005) visible {"ifs":510,"cerbos":510,"spicedb":510} agree=true
+    ifs      median 2.409 ms  min 2.217 ms  max 2.608 ms  errors 0
+    cerbos   median 9.559 ms  min 8.907 ms  max 12.693 ms  errors 0
+    spicedb  median 37.661 ms  min 35.517 ms  max 90.37 ms  errors 0
