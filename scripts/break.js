@@ -1,4 +1,4 @@
-// Forget one line of the step 4 change in each design and show that the
+// Leave out part of the step 4 change in each design and show that the
 // expected-decisions table catches it. Each break must produce mismatches,
 // and only of the kinds listed, or this script fails.
 //   node scripts/break.js   (writes results/breaks.json)

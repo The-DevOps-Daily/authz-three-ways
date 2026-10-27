@@ -1,6 +1,7 @@
-// The cost of the call itself on this machine: a request that does no
-// authorization work, to each engine, next to a Node-to-Node TCP echo.
-// Subtract it from a check to see what the decision itself costs.
+// A reference point for the cost of a call on this machine: a request that
+// does no authorization work, to each engine, next to a Node-to-Node TCP echo.
+// It is a different RPC from a check, so a check minus this is not the cost
+// of the decision.
 //   node harness/bench-floor.js --out=file
 import net from 'node:net';
 import { spawn } from 'node:child_process';

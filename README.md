@@ -15,7 +15,7 @@ npm ci
 ./scripts/run-steps-cache.sh  # SpiceDB lists, cold and warm cache, at every step
 node scripts/summary.js       # the tables in results/summary.md
 node scripts/diffstat.js      # lines and files changed per step per design, read from git
-node scripts/break.js         # forget one line of the late rule in each design: the table must catch it
+node scripts/break.js         # leave out part of the late rule in each design: the table must catch it
 rm -rf .bin .steps            # remove the binaries and the exported step trees
 ```
 
@@ -77,8 +77,8 @@ so it holds all three designs at that step; the run scripts export it to
   must be identical before anything is timed. `--crosscheck` also checks every
   document one by one and compares it with the list.
 - `harness/bench-floor.js`: a request to each engine that does no
-  authorization work, next to a Node-to-Node TCP echo: the cost of the call
-  itself on this machine.
+  authorization work, next to a Node-to-Node TCP echo: a reference point for
+  what a call costs on this machine.
 - `harness/lookup-pages.js`: LookupResources at page sizes 0 (no limit), 1000
   and 100.
 - `harness/spicedb-list-cache.js`: SpiceDB lists timed twice on purpose: the
@@ -91,7 +91,7 @@ so it holds all three designs at that step; the run scripts export it to
   of it, for every fixture user.
 - `scripts/variant.js`: re-runs the list benchmark with one deliberate code
   change (an uncorrelated `IN` subquery in the Cerbos adapter).
-- `scripts/break.js`: removes one part of the step 4 change from each design;
+- `scripts/break.js`: leaves out part of the step 4 change in each design;
   the table must catch every break.
 - `scripts/quiet.sh`: waits for a low load average before each timed run.
 - `results/`: every recorded run. Each JSON file carries a stamp: the harness
@@ -124,8 +124,8 @@ documents, medians (`results/summary.md` has the rest):
 - SpiceDB's cold lists got about 3.5 times slower at step 4, when the
   contractor exclusion arrived; warm lists did not change
   (`results/steps/step<N>-spicedb-list-cache.json`).
-- With one line of the late rule missing, each design fails open, and the
-  table catches it (`results/breaks.txt`).
+- With part of the late rule left out, each design fails open, and the
+  table catches each of the three injected faults (`results/breaks.txt`).
 - One of 60,000 SpiceDB checks failed with `UNAVAILABLE` (`REFUSED_STREAM`); it
   is counted, not timed.
 
