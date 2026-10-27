@@ -46,7 +46,9 @@ Every step is four commits, each with a tag:
   nothing else.
 
 So `git show step4-cerbos` is exactly what the late rule cost in Cerbos, and
-`scripts/diffstat.js` counts it. `step<N>-spicedb` is the last commit of step N,
+`scripts/diffstat.js` counts it. One later commit changed a comment in
+`approaches/spicedb/index.js` (no code); the run scripts use the tags, so the
+recorded runs used the code exactly as tagged. `step<N>-spicedb` is the last commit of step N,
 so it holds all three designs at that step; the run scripts export it to
 `.steps/step<N>/` and run the harness from `HEAD` against it.
 

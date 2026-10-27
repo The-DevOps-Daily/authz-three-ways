@@ -5,8 +5,9 @@ import { v1 } from '@authzed/authzed-node';
 import { syncAll } from './sync.js';
 
 const schema = readFileSync(new URL('./schema.zed', import.meta.url), 'utf8');
-// LookupResources returns at most --max-lookup-resources-limit (default 1000)
-// results per call, so a full list pages with the cursor.
+// A page size may not exceed --max-lookup-resources-limit (default 1000). A
+// limit of 0 streams every result in one call; this adapter pages by 1000 and
+// follows the cursor instead.
 const PAGE = 1000;
 
 const ref = (objectType, objectId) => v1.ObjectReference.create({ objectType, objectId });
